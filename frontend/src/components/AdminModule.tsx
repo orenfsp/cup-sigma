@@ -368,13 +368,6 @@ export default function AdminModule({ token }: AdminModuleProps) {
               ))}
             </div>
 
-            <button
-              onClick={handleDownloadCsv}
-              className="px-4 py-2 rounded-xl bg-teal-600 hover:bg-teal-700 text-white text-xs font-bold flex items-center gap-1.5 shadow-xs transition-all"
-            >
-              <Download className="w-4 h-4" />
-              <span>Выгрузить обезличенный CSV (без текстов)</span>
-            </button>
           </div>
 
           {analytics && (

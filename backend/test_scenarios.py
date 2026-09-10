@@ -32,7 +32,7 @@ print(f"[OK] Crisis successfully detected! Matched markers: {markers}")
 
 # 3. Test Non-Crisis Free Text
 print("\n[Test 3] Normal Text Classification:")
-normal_text = "В классном чате Telegram создали обидные стикеры с моей фотографией"
+normal_text = "В классном чате MAX создали обидные стикеры с моей фотографией"
 is_crisis_2, _ = detect_crisis(normal_text)
 assert not is_crisis_2, "Normal text falsely detected as crisis"
 suggestion = suggest_category_and_specialist(normal_text)

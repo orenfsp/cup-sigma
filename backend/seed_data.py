@@ -112,7 +112,7 @@ def seed_database():
                 priority="standard",
                 status="new",
                 is_crisis=False,
-                clarification_answers=json.dumps({"где происходит": "В школе у раздевалки и в Telegram", "как давно": "Около двух недель", "обращался ли к кому-то": "Нет, боюсь сделать хуже"}),
+                clarification_answers=json.dumps({"где происходит": "В школе у раздевалки и в MAX", "как давно": "Около двух недель", "обращался ли к кому-то": "Нет, боюсь сделать хуже"}),
                 created_at=datetime.utcnow() - timedelta(minutes=25)
             )
 
@@ -126,7 +126,7 @@ def seed_database():
                 status="new",
                 is_crisis=True,
                 crisis_reasons="угрожают расправой, изобьют, не хочу жить",
-                emergency_contact="Telegram: @help_me_please",
+                emergency_contact="MAX: @help_me_please",
                 clarification_answers=json.dumps({"где происходит": "Рядом со школой", "кто участвует": "Группа из 11 класса", "обращался ли к кому-то": "Боюсь рассказывать родителям"}),
                 created_at=datetime.utcnow() - timedelta(minutes=8)
             )

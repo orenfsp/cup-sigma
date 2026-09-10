@@ -12,6 +12,10 @@ interface NavbarProps {
   onLogout: () => void;
 }
 
+function AuthAdmin(pass: string) {
+  return prompt("Введите пароль") === pass
+}
+
 export default function Navbar({
   activeTab,
   setActiveTab,
@@ -56,44 +60,44 @@ export default function Navbar({
               👤 Заявитель
             </button>
             <button
-              onClick={() => onQuickLogin("operator")}
+              onClick={() => AuthAdmin("Op123") && onQuickLogin("operator")}
               className={`px-2.5 py-0.5 rounded text-[11px] font-medium transition-all ${
                 currentUser?.role === "operator"
                   ? "bg-indigo-600 text-white shadow-xs"
                   : "bg-slate-800 text-slate-300 hover:bg-slate-700"
               }`}
             >
-              🎧 Оператор (С3, С6)
+              🎧 Оператор
             </button>
             <button
-              onClick={() => onQuickLogin("expert_psy")}
+              onClick={() =>AuthAdmin("Ps123") && onQuickLogin("expert_psy")}
               className={`px-2.5 py-0.5 rounded text-[11px] font-medium transition-all ${
                 currentUser?.username === "expert_psy"
                   ? "bg-emerald-600 text-white shadow-xs"
                   : "bg-slate-800 text-slate-300 hover:bg-slate-700"
               }`}
             >
-              🧠 Психолог (С4)
+              🧠 Психолог
             </button>
             <button
-              onClick={() => onQuickLogin("expert_law")}
+              onClick={() =>AuthAdmin("Ur123") && onQuickLogin("expert_law")}
               className={`px-2.5 py-0.5 rounded text-[11px] font-medium transition-all ${
                 currentUser?.username === "expert_law"
                   ? "bg-amber-600 text-white shadow-xs"
                   : "bg-slate-800 text-slate-300 hover:bg-slate-700"
               }`}
             >
-              ⚖️ Юрист (С4)
+              ⚖️ Юрист
             </button>
             <button
-              onClick={() => onQuickLogin("admin")}
+              onClick={() =>AuthAdmin("admin") && onQuickLogin("admin")}
               className={`px-2.5 py-0.5 rounded text-[11px] font-medium transition-all ${
                 currentUser?.role === "admin"
                   ? "bg-purple-600 text-white shadow-xs"
                   : "bg-slate-800 text-slate-300 hover:bg-slate-700"
               }`}
             >
-              ⚙️ Админ (С7, С8)
+              ⚙️ Админ
             </button>
           </div>
         </div>
@@ -125,15 +129,6 @@ export default function Navbar({
 
           {/* Primary Navigation / Actions */}
           <div className="flex items-center gap-2 sm:gap-3">
-            {/* Mobile QR-code button */}
-            <button
-              onClick={() => setShowMobileModal(true)}
-              className="hidden sm:flex items-center gap-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-xs shadow-xs hover:shadow-sm transition-all"
-            >
-              <Smartphone className="w-4 h-4" />
-              <span className="hidden sm:inline">Открыть на телефоне</span>
-            </button>
-
             {!currentUser ? (
               <>
                 {/* Tone Switcher Indicator for Applicant */}
@@ -159,32 +154,6 @@ export default function Navbar({
                     Взрослый («вы»)
                   </button>
                 </div>
-
-                <button
-                  onClick={() => setActiveTab("create")}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                    activeTab === "create"
-                      ? "bg-teal-600 text-white shadow-sm shadow-teal-600/25"
-                      : "text-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  <PlusCircle className="w-4 h-4" />
-                  <span className="hidden md:inline">Подать обращение</span>
-                  <span className="[@media(min-width:581px)]:block hidden">Подать</span>
-                </button>
-
-                <button
-                  onClick={() => setActiveTab("track")}
-                  className={`flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-semibold transition-all ${
-                    activeTab === "track"
-                      ? "bg-teal-600 text-white shadow-sm shadow-teal-600/25"
-                      : "text-slate-700 hover:bg-slate-100"
-                  }`}
-                >
-                  <Search className="w-4 h-4" />
-                  <span className="hidden md:inline">Проверить статус</span>
-                  <span className="[@media(min-width:581px)]:block hidden">Статус</span>
-                </button>
               </>
             ) : (
               /* Staff Active Header */
